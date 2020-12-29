@@ -1,0 +1,50 @@
+body {
+    margin: 0px;
+}
+
+
+header {
+    text-align: center;
+    background-color: blue;
+    color: white;
+    padding: 15px;
+    margin: 0px;
+}
+
+
+#timewatch {
+    width: 500px;
+    justify-content: center;
+    background-color: beige;
+    padding: 25px;
+    margin: 50px auto;
+   
+}
+
+
+#stopwatch_display {
+     display: inline-flex;
+    justify-content: space-around;
+    width: 100%;
+}
+
+.btn {
+    width: 25%;
+    background-color: yellowgreen;
+}
+
+#pause {
+    display: none;
+}
+
+.buttons {
+    width: 500px;
+    margin: auto;
+    justify-content: center;
+}
+
+.btns {
+    width: 100%;
+    justify-content: space-around;
+    display: inline-flex;
+}

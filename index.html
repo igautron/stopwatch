@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>stopwatch</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="style.css"/>
+    <script src="script.js"></script>
+</head>
+<body>
+    <header>Stopwatch</header>
+    <section>
+        <div>
+            <div id='timewatch'>
+                <div id='stopwatch_display'>
+                    <div id='minutes'>
+                       <p id='min'>00</p>
+                    </div>
+                    <div id='seconds'>
+                       <p id='sec'>00</p>
+                    </div>
+                    <div id='miliseconds'>
+                       <p id='milisec'>00</p>
+                    </div>
+                </div>
+            </div>
+            <div class='buttons'>
+                <div class='btns'>
+                    <button id='start' class='btn'>Start</button>
+                    <button id='pause' class='btn'>Pause</button>
+                    <button id='clear' class='btn'>Clear</button>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script>
+    
+    var start = document.querySelector('#start');
+    var pause = document.querySelector('#pause');
+    var clear = document.querySelector('#clear');
+        
+    var min = document.querySelector('#min');
+    var sec = document.querySelector('#sec');
+    var mil = document.querySelector('#milisec')  
+    var flag = false;
+    
+    function displayStartButton() {
+   
+     start.style.display = 'inline-block';
+     start.style.margin = '0px';
+     pause.style.display = 'none';
+     pause.style.margin = '0px';
+   } 
+   
+   function displayPauseButton() {
+   
+     start.style.display = 'none';
+     pause.style.display = 'inline-block';
+     start.style.margin = '0px';
+     pause.style.margin = '0px';
+   }
+   
+   // Get Date start point
+  
+   function startStopwatch() {
+    if(!flag) initialDate = new Date;
+   }
+   
+   // рассчет таймера
+  
+   function getTime() {
+   
+     var currentDate = new Date;
+     timer = new Date (currentDate - initialDate);
+   
+     milliseconds = timer.getMilliseconds();
+     seconds = timer.getSeconds();
+     minutes = timer.getMinutes();
+    
+  
+     if(milliseconds < 100){
+       milliseconds = '0' + milliseconds;
+     }
+  
+     if(seconds < 10){
+       seconds = '0' + seconds;
+     }
+   
+     if (minutes < 10){
+       minutes = '0' + minutes;
+     }
+  
+   }
+  
+   function counter() {
+   
+     getTime();
+  
+     mil.innerHTML = milliseconds;
+     sec.innerHTML = seconds;
+     min.innerHTML = minutes;
+   }
+  
+   function displayTimer() {
+   
+     timerId = setInterval(counter, 10);
+   }
+   
+   function pauseTimer() {
+   
+     clearInterval(timerId);
+     getTime();
+     flag = true;
+   }
+    
+   
+   function resetTimer() {
+  
+     flag = false;
+     clearInterval(timerId);
+   
+     start.style.display = 'inline-block';
+     pause.style.display = 'none';
+
+     mil.innerHTML = '00';
+     min.innerHTML = '00';
+     sec.innerHTML = '00';
+
+   }
+
+   
+
+   start.addEventListener('click', startStopwatch);
+   start.addEventListener('click', displayPauseButton);
+   start.addEventListener('click', displayTimer);
+   
+   pause.addEventListener('click', pauseTimer);
+   pause.addEventListener('click', displayStartButton);
+   
+   clear.addEventListener('click', resetTimer);
+        
+    
+    </script>
+</body>
+</html>
+
+
+        
+        
